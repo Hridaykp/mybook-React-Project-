@@ -5,7 +5,6 @@ const customFetch = async(url, {body, ...customConfig})=>{
     const token = window.localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
     const headers = {
         'content-type': 'application/x-www-form-urlencoded',
-        // Accept: 'application/json'
     }
     if(token){
         headers.Authorization = `Bearer ${token}`;
@@ -34,7 +33,6 @@ const customFetch = async(url, {body, ...customConfig})=>{
     }catch(error){
         console.log('error');
         return{
-            
             message: error.message,
             success: false
         };

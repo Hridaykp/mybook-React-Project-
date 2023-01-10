@@ -23,4 +23,4 @@ const API_ROOT = 'https://codeial.codingninjas.com:8000/api/v2/';
 };
 
 
-export const LOCALSTORAGE_TOKEN_KEY = '__mybook_token__'
+export const LOCALSTORAGE_TOKEN_KEY = '__codeial_token__'

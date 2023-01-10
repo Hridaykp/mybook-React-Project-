@@ -1,4 +1,29 @@
-export * from './constants'
+export * from './constants';
+
+//setItem 
+export const setItemInLocalStorage = (key, value) =>{
+    if(!key || !value){
+        return console.log("Can not store in LS");
+    }
+    const valueToStore = typeof value !== "string" ? JSON.stringify(value) : value;
+    localStorage.setItem(key, valueToStore);
+}
+
+//getItem
+export const getItemInLocalStorage = (key) =>{
+    if(!key){
+        return console.log("Can not get the value from LS");
+    }
+    return localStorage.getItem(key);
+}
+
+//removeItem
+export const removeItemInLocalStorage = (value, key) =>{
+    if(!key){
+        return console.log("Can not get the value from LS");
+    }
+    localStorage.removeItem(key);
+}
 
 export const getFormBody = (params) => {
     let formBody = [];
@@ -12,4 +37,5 @@ export const getFormBody = (params) => {
   
     return formBody.join('&'); // 'username=aakash&password=123213'
 };
+
   
