@@ -18,7 +18,7 @@ export const getItemInLocalStorage = (key) =>{
 }
 
 //removeItem
-export const removeItemInLocalStorage = (value, key) =>{
+export const removeItemInLocalStorage = (key) =>{
     if(!key){
         return console.log("Can not get the value from LS");
     }

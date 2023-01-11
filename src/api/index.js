@@ -7,7 +7,7 @@ const customFetch = async(url, {body, ...customConfig})=>{
         'content-type': 'application/x-www-form-urlencoded',
     }
     if(token){
-        headers.Authorization = `Bearer ${token}`;
+        headers.Authorization = `Bearer ${token}`;  
     }
     const config = {
         ...customConfig,
@@ -50,4 +50,11 @@ export const login = (email, password) =>{
         method: "POST",
         body:{email, password}
     })
+};
+
+export const register = (name, email, password, confirmPassword)=>{
+    return customFetch(API_URLS.signup(),{
+        method: "POST",
+        body: {name, email, password, confirm_password: confirmPassword}
+    });
 };

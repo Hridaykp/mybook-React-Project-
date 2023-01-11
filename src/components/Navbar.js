@@ -29,12 +29,11 @@ const Navbar =()=>{
                     : (
                         <>
                             <li>
-                            <Link to="/login">Log In</Link>
-                        </li>
-                        
-                        <li>
-                            <a href="/">Register</a>
-                        </li>
+                                <Link to="/login">Log In</Link>
+                            </li>
+                            <li>
+                                <Link to="/register">Register</Link>
+                            </li>
                         </>
                     )}
                     </ul>
