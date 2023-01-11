@@ -13,7 +13,7 @@ const Signup = () => {
     const { addToast } = useToasts();
     const auth = useAuth();
     const navigate = useNavigate();
-    console.log(navigate+"jiji");
+    // console.log(navigate);
     
     const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -44,9 +44,9 @@ const Signup = () => {
     const response = await auth.signup(name, email, password, confirmPassword);
 
     if (response.success) {
-      navigate('/login');
+      navigate("/login");
       setSigningUp(false);
-
+     console.log("123", navigate);
       return addToast('User registered successfully, please login now', {
         appearance: 'success',
         autoDismiss: true,
@@ -102,7 +102,7 @@ const Signup = () => {
         />
       </div>
       <div className={styles.field}>
-        <button  onClick={()=>navigate("/login")} disabled={signingUp}>
+        <button   disabled={signingUp}>
           {signingUp ? 'Signing up...' : 'Signup'}
         </button>
       </div>

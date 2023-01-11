@@ -1,6 +1,5 @@
 import { Routes, Route} from "react-router-dom";
-import { useAuth } from "../hooks";
-import { Home, Login, Signup }  from '../pages';
+import { Home, Login, Signup, Setting }  from '../pages';
 import Navbar from "./Navbar";
 
 const Page404 = () =>{
@@ -9,7 +8,7 @@ const Page404 = () =>{
 
 function App() {
     
-    const auth = useAuth();
+    // const auth = useAuth();
     return (
         <div className="App">
             <Navbar/>
@@ -17,7 +16,7 @@ function App() {
                 <Route exact path="/" element= {<Home posts={[]} />} />
                 <Route exact path="/login" element= {<Login/>} />
                 <Route exact path="/register" element= {<Signup/>} />
-                {/* <Route exact path="/user/kjdhdh" element= {<UserInfo/>} /> */}
+                <Route exact path="/settings" element= {<Setting/>} />
                 <Route element={<Page404/>}/>
             </Routes>
            
