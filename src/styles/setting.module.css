@@ -8,7 +8,7 @@
     margin-top: 50px;
     width: 40%;
     border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: rgba(26, 23, 23, 0.16) 2px 1px 1px 2px;
   }
   .settings .imgContainer {
     display: flex;
@@ -37,12 +37,12 @@
     outline: none;
   }
   .settings .editBtn {
-    border: 1px solid #ef7917;
+    border: 10px solid #ef7917;
     box-sizing: border-box;
-    color: #ef7917;
+    color: #d8a61c;
   }
   .settings .saveBtn {
-    background: #ef7917;
+    background: #86116d;
     color: #fff;
     border: none;
     padding: 10px 20px;
