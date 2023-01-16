@@ -14,6 +14,8 @@ const PrivateRoute =({children})=>{
 
 
 function App() {
+    const auth = useAuth();
+    console.log("auth", auth);
     return (
         <div className="App">
             <Navbar/>

@@ -5,7 +5,10 @@ const initialState = {
     login: ()=>{},
     logout: ()=>{},
     loading: true,
+    signup:()=>{},
     updateUser:()=>{},
+    updateUserFriends: ()=>{},
+    
 
 }
 

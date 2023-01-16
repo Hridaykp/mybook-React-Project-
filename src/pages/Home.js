@@ -1,10 +1,10 @@
-import styles from '../styles/home.module.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Comment from '../components/Comment';
 import { useState, useEffect } from 'react';
 import { getPosts } from '../api';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
+import styles from '../styles/home.module.css';
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -42,11 +42,14 @@ const Home = () => {
                     user: post.user,
                   },
                 }}
-                className={styles.postAuthor}>{post.user.name}</Link>
+                className={styles.postAuthor}
+                >
+                  {post.user.name}
+                </Link>
                 <span className={styles.postTime}>a minute ago</span>
               </div>
             </div>
-            <div className={styles.postContent}>{post.content}</div>
+            <div className={styles.postContent}>{post.conent}</div>
 
             <div className={styles.postActions}>
               <div className={styles.postLike}>
@@ -82,7 +85,7 @@ const Home = () => {
 };
 
 
-Home.propTypes ={
-    posts: PropTypes.array.isRequired
-}
+// Home.propTypes ={
+//     posts: PropTypes.array.isRequired
+// }
 export default Home;
