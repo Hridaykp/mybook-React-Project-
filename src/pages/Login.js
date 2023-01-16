@@ -2,13 +2,13 @@ import { useState } from 'react';
 import styles from '../styles/login.module.css'
 import { useToasts } from "react-toast-notifications"
 import { useAuth } from '../hooks';
+import { Navigate } from 'react-router-dom';
 const Login = () =>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loggingIn, setLoggingIn] = useState(false);
     const {addToast} = useToasts();
     const auth = useAuth();
-    console.log(auth);
     const handleSubmit = async (e)=>{
         e.preventDefault();
         setLoggingIn(true);
@@ -31,6 +31,13 @@ const Login = () =>{
         }
         setLoggingIn(false);
     }
+    // if user already logged in , it will aotomatically redirect to home page
+    if(auth.user){
+        return (
+            <Navigate to="/"/>
+        )
+    }
+
     return (
         <form className={styles.loginForm} onSubmit = {handleSubmit} >
             <span className={styles.loginSignupHeader}>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 import { useAuth } from '../hooks';
 import styles from '../styles/login.module.css';
@@ -13,8 +13,6 @@ const Signup = () => {
     const { addToast } = useToasts();
     const auth = useAuth();
     const navigate = useNavigate();
-    // console.log(navigate);
-    
     const handleFormSubmit = async (e) => {
     e.preventDefault();
     setSigningUp(true);
@@ -44,9 +42,7 @@ const Signup = () => {
     const response = await auth.signup(name, email, password, confirmPassword);
 
     if (response.success) {
-      navigate("/login");
       setSigningUp(false);
-     console.log("123", navigate);
       return addToast('User registered successfully, please login now', {
         appearance: 'success',
         autoDismiss: true,
@@ -60,7 +56,12 @@ const Signup = () => {
 
     setSigningUp(false);
   };
-
+  // if user already logged in/signed up, it will aotomatically redirect to home page
+  if(auth.user){
+    return (
+      <Navigate to="/"/>
+    )
+  }
   return (
     <form className={styles.loginForm} onSubmit={handleFormSubmit}>
       <span className={styles.loginSignupHeader}> Signup</span>
@@ -102,7 +103,7 @@ const Signup = () => {
         />
       </div>
       <div className={styles.field}>
-        <button   disabled={signingUp}>
+        <button  onClick={()=>{navigate("/login")}} disabled={signingUp}>
           {signingUp ? 'Signing up...' : 'Signup'}
         </button>
       </div>
