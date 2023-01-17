@@ -5,10 +5,12 @@ import { getPosts } from '../api';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
 import styles from '../styles/home.module.css';
-
+import { useAuth } from '../hooks';
+import  FriendsList  from '../components/FriendsList';
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState([]);
+  const auth = useAuth();
      useEffect(()=>{
         const fetchPosts = async() => {
             const response = await getPosts();
@@ -25,6 +27,7 @@ const Home = () => {
       return <Loader/> ;
     }
   return (
+    <div className={styles.home}>
     <div className={styles.postsList}>
       {posts.map((post) => (
         <div className={styles.postWrapper} >
@@ -80,6 +83,8 @@ const Home = () => {
           </div>
         </div>
       ))}
+      </div>
+      {auth.user && <FriendsList/>}
     </div>
   );
 };

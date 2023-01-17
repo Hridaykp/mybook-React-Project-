@@ -146,6 +146,7 @@
     padding: 20px 50px;
     display: flex;
     width: 80%;
+    
     margin: 0 auto;
   }
   .home .posts-list {
@@ -165,9 +166,10 @@
   .friendsList .header {
     border-bottom: 1px solid #e0e0e0;
     font-weight: 600;
-    font-size: 16px;
-    color: #424242;
+    font-size: 17px;
+    color: #292828;
     padding: 20px;
+    background-color: rgb(128, 218, 218);
   }
   .friendsList .friendsImg img {
     height: 40px;
