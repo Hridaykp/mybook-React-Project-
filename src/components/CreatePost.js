@@ -9,6 +9,7 @@ const CreatePost = ()=> {
     const [addingPost, setAddingPost] = useState(false);
     const { addToast } = useToasts();
     const posts = usePosts();
+    
     const handleAddPostClick = async() => {
         setAddingPost(true);
         //do some checks for post does not empty
