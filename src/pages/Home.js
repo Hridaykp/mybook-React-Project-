@@ -1,37 +1,22 @@
-// import PropTypes from 'prop-types';
 import Comment from '../components/Comment';
-import { useState, useEffect } from 'react';
-import { getPosts } from '../api';
 import Loader from '../components/Loader';
 import { Link } from 'react-router-dom';
 import styles from '../styles/home.module.css';
-import { useAuth } from '../hooks';
+import { useAuth, usePosts } from '../hooks';
 import FriendsList from '../components/FriendsList';
 import CreatePost from '../components/CreatePost';
 const Home = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState([]);
   const auth = useAuth();
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await getPosts();
-      console.log('response', response);
-      if (response.success) {
-        setPosts(response.data.posts);
-      }
-      setLoading(false);
-    };
-    fetchPosts();
-  }, []);
+  const posts = usePosts();
 
-  if (loading) {
+  if (posts.loading) {
     return <Loader />;
   }
   return (
     <div className={styles.home}>
       <div className={styles.postsList}>
         {<CreatePost />}
-        {posts.map((post) => (
+        {posts.data.map((post) => (
           <div className={styles.postWrapper}>
             <div className={styles.postHeader}>
               <div className={styles.postAvatar}>
@@ -54,7 +39,7 @@ const Home = () => {
                   <span className={styles.postTime}>a minute ago</span>
                 </div>
               </div>
-              <div className={styles.postContent}>{post.conent}</div>
+              <div className={styles.postContent}>{post.content}</div>
 
               <div className={styles.postActions}>
                 <div className={styles.postLike}>
@@ -62,7 +47,7 @@ const Home = () => {
                     src="https://cdn-icons-png.flaticon.com/512/456/456115.png"
                     alt="likes-icon"
                   />
-                  <span>5</span>
+                  <span>{post.likes.length}</span>
                 </div>
 
                 <div className={styles.postCommentsIcon}>

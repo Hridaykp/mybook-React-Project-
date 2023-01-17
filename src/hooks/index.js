@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "../providers/AuthProvider";
-import { editProfile, fetchUserFriends, login as userLogin, register} from "../api";
+import { AuthContext, PostsContext} from "../providers";
+import { editProfile, fetchUserFriends, login as userLogin, register, getPosts} from "../api";
 import { setItemInLocalStorage, LOCALSTORAGE_TOKEN_KEY, removeItemInLocalStorage, getItemInLocalStorage } from "../utils";
 import jwt from "jwt-decode";
 
 export const useAuth =()=>{
-    return useContext(AuthContext)
+    return useContext(AuthContext);
 }
+
 export const useProvideAuth =()=>{
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -21,9 +22,6 @@ export const useProvideAuth =()=>{
                 if(response.success){
                     friends = response.data.friends
                 }
-                // else{
-                //     friends = []
-                // }
                 setUser({
                     ...user,
                     friends,
@@ -115,7 +113,36 @@ export const useProvideAuth =()=>{
         signup,
         loading,
         updateUser,
-        updateUserFriends
+        updateUserFriends,
     };
 };
-    
+
+export const usePosts =()=>{
+    return useContext(PostsContext)
+}
+
+export const useProvidePosts =()=>{
+    const [posts, setPosts] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+          const response = await getPosts();
+          if (response.success) {
+            setPosts(response.data.posts);
+          }
+          setLoading(false);
+        };
+
+        fetchPosts();
+    }, []);
+
+    const addPostToState = () =>{
+
+    }
+    return {
+        data: posts,
+        loading,
+        addPostToState
+    }
+}
